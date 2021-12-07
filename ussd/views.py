@@ -35,7 +35,7 @@ def ussdApp(request):
             response +="2. Ruhango \n"
             response +="3.Nyanza \n"
             response += "00. SUbira inyuma \n"
-        elif text == '1':
+        elif text == '1*1':
             response = "CON Here are agencies that do tour to Nyagatare\n"
             response +="1.Horizon\n"
             response +="2.Stella\n"
