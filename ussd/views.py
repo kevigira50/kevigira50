@@ -2,7 +2,9 @@ from django.http.response import HttpResponse
 from django.shortcuts import render
 import africastalking
 from django.views.decorators.csrf import csrf_exempt
+from .models import Product
 # Create your views here.
+
 def  welcome(request):
     return render(request, 'index.html')
 
@@ -29,12 +31,11 @@ def ussdApp(request):
             response += "2. kanda 2 gukomeza mu kinyarwanda \n"
             response += "3. Gusaba ubufasha \n "
         elif text == '1':
-
+            locations = Product.objects.all()
             response = "CON Where are you heading? \n"
-            response +="1. Nyagatare \n"
-            response +="2. Ruhango \n"
-            response +="3.Nyanza \n"
-            response += "00. SUbira inyuma \n"
+            for location in locations:
+                response += ""+str(location.id)+". "+str(location.title)+"\n"
+
         elif text == '1*1':
             response = "CON Here are agencies that do tour to Nyagatare\n"
             response +="1.Horizon\n"
